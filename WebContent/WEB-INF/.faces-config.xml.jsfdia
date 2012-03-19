@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#login.jsp" PATH="/login.jsp"
+  SHAPE="144,128,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#login.jsp:0" NAME="item" PATH="/login.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="false:#{loginController.checkLogin}:#loginerror.jsp"
+    NAME="output" PATH="/loginerror.jsp" TARGET="rules:#loginerror.jsp"
+    TITLE="#{loginController.checkLogin}:false" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="true:#{loginController.checkLogin}:#main.jsp" NAME="output1"
+    PATH="/main.jsp" TARGET="rules:#main.jsp"
+    TITLE="#{loginController.checkLogin}:true" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#loginerror.jsp" PATH="/loginerror.jsp"
+  SHAPE="384,72,50,25" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#main.jsp" PATH="/main.jsp"
+  SHAPE="360,208,50,25" model-entity="JSFProcessGroup" persistent="true"/>
+</PROCESS>

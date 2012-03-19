@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+ <managed-bean>
+  <managed-bean-name>kunde</managed-bean-name>
+  <managed-bean-class>classes.Kunde</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>loginController</managed-bean-name>
+  <managed-bean-class>Controller.LoginController</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <navigation-rule>
+  <from-view-id>/login.jsp</from-view-id>
+  <navigation-case>
+   <from-action>#{loginController.checkLogin}</from-action>
+   <from-outcome>false</from-outcome>
+   <to-view-id>/loginerror.jsp</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-action>#{loginController.checkLogin}</from-action>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/main.jsp</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+</faces-config>
