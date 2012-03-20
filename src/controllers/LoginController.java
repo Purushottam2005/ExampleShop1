@@ -23,24 +23,34 @@ import controllerinterfaces.ILoginController;
  *
  */
 public class LoginController implements ILoginController {
-	@Autowired
-	private Kunde kunde;
-	
+
+	private Kunde kunde = new Kunde();
+
 	private GenericDAO genericdao;
 
 	private BeanFactory factory;
+
+	private KundeDAO kundedao;
+	
+
 	
 	public LoginController(){
+		
+	}
+	
+	public void dosomething(){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		factory = context;		
 		//kunde = (Kunde) context.getBean("kunde");
-		//kundedao = (KundeDAO) context.getBean("kundedao");		
+		kundedao = (KundeDAO) context.getBean("kundedao");
 	}
 	
 	@Override
 	public String checkLogin() {
+		dosomething();
 		System.out.println("checklogin");
-		KundeDAO kundedao = (KundeDAO)genericdao;
+		//KundeDAO kundedao = (KundeDAO)genericdao;
+		System.out.println(kunde.getEmail() + " - " + kunde.getPassword() + " - "+ kundedao.getHibernateTemplate().getClass().toString());
 		if (kundedao.checkPassword(kunde.getEmail(), kunde.getPassword())){
 			kunde = kundedao.getKundeByEmailPasswort(kunde.getEmail(), kunde.getPassword());
 			if(kunde.getId()!= 0){
@@ -69,6 +79,16 @@ public class LoginController implements ILoginController {
 	public void setGenericdao(GenericDAO genericdao) {
 		this.genericdao = genericdao;
 	}
+
+	public KundeDAO getKundedao() {
+		return kundedao;
+	}
+
+	public void setKundedao(KundeDAO kundedao) {
+		this.kundedao = kundedao;
+	}
+
+
 
 
 

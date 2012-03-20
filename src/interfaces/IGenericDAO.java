@@ -16,4 +16,6 @@ public interface IGenericDAO {
 	public <T> List<T> findByNamedQuery(Class <T> entitiyClass, String queryName)throws DataAccessException;
 	public <T> List<T> findByNamedParam(Class <T> entitiyClass, String queryString, String paramName, Object value)throws DataAccessException;
 	public <T> List<T> findByNamedQueryAndNamedParam(Class <T> entityClass, String queryName, String[] paramNames, Object[] values) throws DataAccessException;
+	public <T> List<T> findByNamedParam(Class <T> entityClass, String queryString, String[] paramNames, Object[] values)throws DataAccessException;
+	public <T> T findByNamesParam(Class <T> entityClass, String queryString, String[] paramNames, Object[] values)throws DataAccessException;
 }

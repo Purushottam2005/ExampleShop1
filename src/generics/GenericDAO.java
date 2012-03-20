@@ -13,7 +13,7 @@ import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.SessionFactoryUtils;
 
-import classes.Kunde;
+
 
 import interfaces.IGenericDAO;
 /**
@@ -97,7 +97,7 @@ public class GenericDAO implements IGenericDAO {
 		List<T> results = (List<T>)getHibernateTemplate().findByNamedQuery(queryName);
 		return results;
 	}
-	private HibernateTemplate getHibernateTemplate() {
+	public HibernateTemplate getHibernateTemplate() {
 		// TODO Auto-generated method stub
 		return hibernateTemplate;
 	}
@@ -121,12 +121,47 @@ public class GenericDAO implements IGenericDAO {
 			throws DataAccessException {
 		try{
 			List<T> results = (List<T>)getHibernateTemplate().findByNamedQueryAndNamedParam(queryName, paramNames, values);
+
 			return results;			
 		}catch(Exception ex){
 			ex.printStackTrace();
 			return null;
 		}
 
+	}
+
+	@Override
+	public <T> List<T> findByNamedParam(Class<T> entityClass,
+			String queryString, String[] paramNames, Object[] values)
+			throws DataAccessException {
+		// TODO Auto-generated method stub
+		try{
+			//List<T> results = (List<T>)getHibernateTemplate().findByNamedQueryAndNamedParam(queryName, paramNames, values);
+			List<T> results = (List<T>)getHibernateTemplate().findByNamedParam(queryString, paramNames, values);
+			return results;			
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public <T> T findByNamesParam(Class<T> entityClass, String queryString,
+			String[] paramNames, Object[] values) throws DataAccessException {
+		// TODO Auto-generated method stub
+		try{
+
+			@SuppressWarnings("unchecked")
+			List<T> results = (List<T>)getHibernateTemplate().findByNamedParam(queryString, paramNames, values);
+			T result = null;
+			if(results.size()==1){
+				result = results.get(0);
+			}
+			return result;		
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return null;
+		}
 	}
 
 

@@ -9,8 +9,9 @@
 </head>
 <body>
 <f:view>
+
 	<h:form>
-		<h:panelGrid columns="2">
+		<h:panelGrid columns="2" >
 			<h:outputText value="Email"></h:outputText>
 			<h:inputText value="#{LoginController.kunde.email}" required="true"></h:inputText>
 		</h:panelGrid>

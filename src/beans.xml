@@ -22,7 +22,8 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>classes.Artikel</value>
-				<value>classes.Artikelgruppe</value>							
+				<value>classes.Artikelgruppe</value>	
+				<value>classes.Kunde</value>						
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -34,7 +35,7 @@
 					true
 				</prop>
 				<prop key="hibernate.hbm2ddl.auto">
-					update
+					validate
 				</prop>
 
 			</props>
@@ -47,7 +48,7 @@
 	<context:component-scan base-package="classes" />
 	<context:component-scan base-package="controllers" />
 	
-	<bean id="genericdao" class="generics.GenericDAO">
+	<bean name="mygenericdao" class="generics.GenericDAO">
 		<property name="sessionFactory">
 			<ref local="sessionFactory"/>
 		</property>	  
@@ -61,7 +62,12 @@
 	<bean id="kunde" class="classes.Kunde" />
 	<bean id="warenkorb" class="classes.Warenkorb" />
 	<bean id="logincontroller" class="controllers.LoginController" >
-		
+		<property name="genericdao" ref="mygenericdao"/>
+	</bean>
+	<bean id="kundedao" class="generics.KundeDAO">
+		<property name="sessionFactory">
+			<ref local="sessionFactory"/>
+		</property>		
 	</bean>
 
 
