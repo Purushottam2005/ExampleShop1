@@ -34,7 +34,7 @@
 					true
 				</prop>
 				<prop key="hibernate.hbm2ddl.auto">
-					create
+					update
 				</prop>
 
 			</props>
@@ -45,22 +45,25 @@
 
 
 	<context:component-scan base-package="classes" />
-	<context:component-scan base-package="generics" />
+	<context:component-scan base-package="controllers" />
 	
-	<bean name="genericdao" class="generics.GenericDAO">
+	<bean id="genericdao" class="generics.GenericDAO">
 		<property name="sessionFactory">
 			<ref local="sessionFactory"/>
 		</property>	  
 	</bean>
 	
+
+	
+	
 	<bean id="artikel" class="classes.Artikel" />
 	<bean id="artikelgruppe" class="classes.Artikelgruppe" />
 	<bean id="kunde" class="classes.Kunde" />
 	<bean id="warenkorb" class="classes.Warenkorb" />
-	<bean id="artikeldao" class="generics.ArtikelDAO" />
-	<bean id="artikelgruppendao" class="generics.ArtikelgruppenDAO" />
-	<bean id="kundedao" class="generics.KundeDAO" />
-	<bean id="warenkorbdao" class="generics.WarenkorbDAO" />
+	<bean id="logincontroller" class="controllers.LoginController" >
+		
+	</bean>
+
 
 </beans>
 	

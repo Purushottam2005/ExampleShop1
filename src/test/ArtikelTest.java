@@ -49,7 +49,7 @@ public class ArtikelTest {
 			configuration.addAnnotatedClass(Kunde.class);
 			this.sessionFactory = configuration.buildSessionFactory();
 			hibernatetemplate = new HibernateTemplate(this.sessionFactory);
-			dao.setHibernateTemplate(hibernatetemplate);
+			dao.setHibernateTemplate(hibernatetemplate, sessionFactory);
 			this.session = SessionFactoryUtils.getSession(sessionFactory, true);
 			TransactionSynchronizationManager.bindResource(sessionFactory, new SessionHolder(session));	
 		}
@@ -57,17 +57,17 @@ public class ArtikelTest {
 		@Test
 		public void test() {
 			ArtikelgruppenDAO agdao = new ArtikelgruppenDAO();
-			agdao.setHibernateTemplate(hibernatetemplate);
+			agdao.setHibernateTemplate(hibernatetemplate, sessionFactory);
 			Artikelgruppe ag = new Artikelgruppe();
 			ag.setBezeichnung("Artikelgruppe 1");
 			ag.setInfo("Informationen zu Artikelgruppe 1");
 			agdao.save(ag);
 			ArtikelDAO adao = new ArtikelDAO();
-			adao.setHibernateTemplate(hibernatetemplate);
+			adao.setHibernateTemplate(hibernatetemplate, sessionFactory);
 			Artikel artikel = new Artikel();
 			artikel.setBezeichnung("Testartikel");
 			artikel.setInfo("TestartikelInfo");
-			artikel.setVk_brutto(19.00);
+			artikel.setVk_brutto(19);
 			artikel.setArtikelgruppe(ag);
 			adao.save(artikel);
 			ArrayList<Artikel>arts = (ArrayList<Artikel>) dao.findAll(Artikel.class);
@@ -75,11 +75,11 @@ public class ArtikelTest {
 			Artikel artikel2 = new Artikel();
 			artikel2.setBezeichnung("Testartikel2");
 			artikel2.setInfo("TestartikelInfo2");
-			artikel2.setVk_brutto(19.00);
+			artikel2.setVk_brutto(19);
 			artikel2.setArtikelgruppe(ag);
 			adao.save(artikel2);
 			KundeDAO kdao = new KundeDAO();
-			kdao.setHibernateTemplate(hibernatetemplate);
+			kdao.setHibernateTemplate(hibernatetemplate, sessionFactory);
 			Kunde k = new Kunde();
 			k.setEmail("none@none.de");
 			k.setPassword("test");

@@ -5,7 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+/**
+ * 
+ * @author andreas monschau
+ * 
+ * class in mano-to-one-relation to class artikel
+ *
+ */
 @Entity
 @Table(name="ART_GRP")
 public class Artikelgruppe {

@@ -9,7 +9,7 @@
 </head>
 <body>
 <f:view>
-login ok
+ok
 </f:view>
 </body>
 </html>

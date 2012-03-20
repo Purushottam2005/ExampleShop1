@@ -7,8 +7,10 @@
     ID="false:#{LoginController.checkLogin}:#loginerror.jsp"
     NAME="output" PATH="/loginerror.jsp" TARGET="rules:#loginerror.jsp"
     TITLE="#{LoginController.checkLogin}:false" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#login.jsp:1" NAME="item1" PATH="/login.jsp" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="true:#{LoginController.checkLogin}:#main.jsp" NAME="output1"
+    ID="true:#{LoginController.checkLogin}:#main.jsp" NAME="output"
     PATH="/main.jsp" TARGET="rules:#main.jsp"
     TITLE="#{LoginController.checkLogin}:true" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>

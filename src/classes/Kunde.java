@@ -4,7 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
 import javax.persistence.Table;
+
+import org.hibernate.annotations.NamedNativeQueries;
+import org.hibernate.annotations.NamedNativeQuery;
+
+
 
 /**
  * 
@@ -13,6 +19,15 @@ import javax.persistence.Table;
  * Entity-Class Kunde mapped to Database-Table "KUN"
  *
  */
+
+
+@NamedNativeQueries({
+	@NamedNativeQuery(
+			name = "findKundeByEmailAndPassword",
+			query = "Select * from KUN k where k.email = :email and k.password= :passwort",
+			resultClass = Kunde.class
+			)
+})
 
 @Entity
 @Table(name="KUN")

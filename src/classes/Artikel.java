@@ -21,8 +21,8 @@ public class Artikel {
 	private int id;
 	private String bezeichnung;
 	private String info;
-	private double vk_netto;
-	private double vk_brutto;
+	private float vk_netto;
+	private float vk_brutto;
 	private String img_url;
 	private Artikelgruppe artikelgruppe;
 	@Id
@@ -49,17 +49,17 @@ public class Artikel {
 		this.info = info;
 	}
 	@Column(name="VK_NETTO")
-	public double getVk_netto() {
+	public float getVk_netto() {
 		return vk_netto;
 	}
-	public void setVk_netto(double vk_netto) {
+	public void setVk_netto(float vk_netto) {
 		this.vk_netto = vk_netto;
 	}
 	@Column(name="VK_BRUTTO")
-	public double getVk_brutto() {
+	public float getVk_brutto() {
 		return vk_brutto;
 	}
-	public void setVk_brutto(double d) {
+	public void setVk_brutto(float d) {
 		this.vk_brutto = d;
 	}
 	@Column(name="IMG_URL")
