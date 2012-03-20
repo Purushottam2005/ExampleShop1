@@ -8,19 +8,19 @@
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
-  <managed-bean-name>loginController</managed-bean-name>
+  <managed-bean-name>LoginController</managed-bean-name>
   <managed-bean-class>Controller.LoginController</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <navigation-rule>
   <from-view-id>/login.jsp</from-view-id>
   <navigation-case>
-   <from-action>#{loginController.checkLogin}</from-action>
+   <from-action>#{LoginController.checkLogin}</from-action>
    <from-outcome>false</from-outcome>
    <to-view-id>/loginerror.jsp</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-action>#{loginController.checkLogin}</from-action>
+   <from-action>#{LoginController.checkLogin}</from-action>
    <from-outcome>true</from-outcome>
    <to-view-id>/main.jsp</to-view-id>
   </navigation-case>

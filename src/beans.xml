@@ -22,7 +22,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>classes.Artikel</value>
-											
+				<value>classes.Artikelgruppe</value>							
 			</list>
 		</property>
 		<property name="hibernateProperties">

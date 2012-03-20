@@ -25,7 +25,7 @@ public class LoginController implements ILoginController {
 	private Kunde kunde;
 	@Autowired
 	private KundeDAO kundedao;
-	@SuppressWarnings("unused")
+
 	private BeanFactory factory;
 	
 	public LoginController(){
@@ -46,6 +46,14 @@ public class LoginController implements ILoginController {
 			}
 		}
 		return kunde!=null;
+	}
+
+	public Kunde getKunde() {
+		return kunde;
+	}
+
+	public void setKunde(Kunde kunde) {
+		this.kunde = kunde;
 	}
 
 }
