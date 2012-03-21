@@ -114,6 +114,15 @@ public class GenericDAO implements IGenericDAO {
 		List<T> results = (List<T>)getHibernateTemplate().findByNamedParam(queryString, paramName, value);
 		return results;
 	}
+	
+	public <T> List<T> findByNamedParam(Class<T> entitiyClass,
+			String queryString)
+			throws DataAccessException {
+		String[] paramNames = new String[0];
+		Object[] values = new Object[0];
+		List<T> results = (List<T>)getHibernateTemplate().findByNamedParam(queryString, paramNames, values);
+		return results;
+	}
 
 	@Override
 	public <T> List<T> findByNamedQueryAndNamedParam(Class<T> entityClass,

@@ -6,6 +6,11 @@ import org.hibernate.SessionFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
+/*
+ * 
+ * Interface for GenericDAO implementation
+ * 
+ */
 public interface IGenericDAO {
 	public void setSessionFactory(SessionFactory sessionFactory);
 	public <T>List <T>findAll(Class<T> entityClass) throws DataAccessException;

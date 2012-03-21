@@ -40,6 +40,7 @@ public class Kunde {
 	private String email;
 	private String password;
 	private String adresse;
+	private String vorname;
 	@Id
 	@GeneratedValue
 	@Column(name="ID")
@@ -69,5 +70,12 @@ public class Kunde {
 	}
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
+	}
+	@Column(name="VORNAME")
+	public String getVorname() {
+		return vorname;
+	}
+	public void setVorname(String vorname) {
+		this.vorname = vorname;
 	}
 }

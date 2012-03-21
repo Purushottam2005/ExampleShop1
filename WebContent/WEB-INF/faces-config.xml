@@ -12,6 +12,11 @@
   <managed-bean-class>controllers.LoginController</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>mainController</managed-bean-name>
+  <managed-bean-class>controllers.MainController</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
  <navigation-rule>
   <from-view-id>/login.jsp</from-view-id>
   <navigation-case>
@@ -19,16 +24,13 @@
    <from-outcome>false</from-outcome>
    <to-view-id>/loginerror.jsp</to-view-id>
   </navigation-case>
-   </navigation-rule>
-    <navigation-rule>
-     <from-view-id>/login.jsp</from-view-id>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/login.jsp</from-view-id>
   <navigation-case>
    <from-action>#{LoginController.checkLogin}</from-action>
    <from-outcome>true</from-outcome>
    <to-view-id>/main.jsp</to-view-id>
   </navigation-case>
  </navigation-rule>
- 
-
- 
 </faces-config>

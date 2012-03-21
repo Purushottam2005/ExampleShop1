@@ -7,7 +7,7 @@ import java.util.List;
  * 
  * @author andreas monschau
  * 
- * Non-Entity class Warenkorb. After ordering, a called SP creates Bestellung
+ * Non-Entity class Warenkorb. It´s stored in the user-session. After ordering, a called SP creates Bestellung.
  *
  */
 public class Warenkorb {

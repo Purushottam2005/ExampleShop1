@@ -15,13 +15,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import controllerinterfaces.ILoginController;
 /**
- * 
- * @author andreas monschau
- * 
- * used to controll interaction between login-jsf and kunde-class. Login-Information is checked
- * and instance of current logged-in user is stored into http-session
- *
- */
+*
+* @author andreas monschau
+*
+* used to controll interaction between login-jsf and kunde-class. Login-Information is checked
+* and instance of current logged-in user is stored into http-session
+*
+*/
 public class LoginController implements ILoginController {
 
 	private Kunde kunde = new Kunde();
@@ -31,24 +31,23 @@ public class LoginController implements ILoginController {
 	private BeanFactory factory;
 
 	private KundeDAO kundedao;
-	
 
-	
+
+
 	public LoginController(){
-		
+
 	}
-	
+
 	public void dosomething(){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		factory = context;		
-		//kunde = (Kunde) context.getBean("kunde");
+		factory = context;
+		
 		kundedao = (KundeDAO) context.getBean("kundedao");
 	}
-	
+
 	@Override
 	public String checkLogin() {
 		dosomething();
-		System.out.println("checklogin");
 		if (kundedao.checkPassword(kunde.getEmail(), kunde.getPassword())){
 			kunde = kundedao.getKundeByEmailPasswort(kunde.getEmail(), kunde.getPassword());
 			if(kunde.getId()!= 0){

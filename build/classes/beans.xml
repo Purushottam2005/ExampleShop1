@@ -1,77 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation="
-       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
-       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
 
 
-	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521"/>
-		<property name="username" value="system"/>
-		<property name="password" value="system"/>
+<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+<property name="url" value="jdbc:oracle:thin:@localhost:1521"/>
+<property name="username" value="system"/>
+<property name="password" value="system"/>
 
-	</bean>
+</bean>
 
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-		<property name="dataSource" ref="myDataSource"/>
-		<property name="annotatedClasses">
-			<list>
-				<value>classes.Artikel</value>
-				<value>classes.Artikelgruppe</value>	
-				<value>classes.Kunde</value>						
-			</list>
-		</property>
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">
-					org.hibernate.dialect.OracleDialect
-				</prop>			
-				<prop key="hibernate.show_sql">
-					true
-				</prop>
-				<prop key="hibernate.hbm2ddl.auto">
-					validate
-				</prop>
+<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+<property name="dataSource" ref="myDataSource"/>
+<property name="annotatedClasses">
+<list>
+<value>classes.Artikel</value>
+<value>classes.Artikelgruppe</value>
+<value>classes.Kunde</value>
+</list>
+</property>
+<property name="hibernateProperties">
+<props>
+<prop key="hibernate.dialect">
+org.hibernate.dialect.OracleDialect
+</prop>
+<prop key="hibernate.show_sql">
+true
+</prop>
+<prop key="hibernate.hbm2ddl.auto">
+validate
+</prop>
 
-			</props>
-		</property>
-	</bean>
+</props>
+</property>
+</bean>
 
-	<context:annotation-config />
+<context:annotation-config />
 
 
-	<context:component-scan base-package="classes" />
-	<context:component-scan base-package="controllers" />
-	
-	<bean name="mygenericdao" class="generics.GenericDAO">
-		<property name="sessionFactory">
-			<ref local="sessionFactory"/>
-		</property>	  
-	</bean>
-	
+<context:component-scan base-package="classes" />
+<context:component-scan base-package="controllers" />
 
-	
-	
-	<bean id="artikel" class="classes.Artikel" />
-	<bean id="artikelgruppe" class="classes.Artikelgruppe" />
-	<bean id="kunde" class="classes.Kunde" />
-	<bean id="warenkorb" class="classes.Warenkorb" />
-	<bean id="logincontroller" class="controllers.LoginController" >
-		<property name="genericdao" ref="mygenericdao"/>
-	</bean>
-	<bean id="kundedao" class="generics.KundeDAO">
-		<property name="sessionFactory">
-			<ref local="sessionFactory"/>
-		</property>		
-	</bean>
+<bean name="mygenericdao" class="generics.GenericDAO">
+<property name="sessionFactory">
+<ref local="sessionFactory"/>
+</property>
+</bean>
+
+
+
+
+<bean id="artikel" class="classes.Artikel" />
+<bean id="artikelgruppe" class="classes.Artikelgruppe" />
+<bean id="artikelgruppedummy" class="classes.Artikelgruppe">
+	<property name="id" value="-1"></property>
+	<property name="bezeichnung" value="Alle"></property>
+	<property name="info" value="Alle Artikel"></property>
+</bean> 
+<bean id="kunde" class="classes.Kunde" />
+<bean id="warenkorb" class="classes.Warenkorb" />
+<bean id="logincontroller" class="controllers.LoginController" >
+<property name="genericdao" ref="mygenericdao"/>
+</bean>
+<bean id="kundedao" class="generics.KundeDAO">
+<property name="sessionFactory">
+<ref local="sessionFactory"/>
+</property>
+</bean>
+<bean id="artikeldao" class="generics.ArtikelDAO">
+<property name="sessionFactory">
+<ref local="sessionFactory"/>
+</property>
+</bean>
+<bean id="artikelgruppendao" class="generics.ArtikelgruppenDAO">
+<property name="sessionFactory">
+<ref local="sessionFactory"/>
+</property>
+</bean>
+<bean id="warenkorbdao" class="generics.WarenkorbDAO">
+<property name="sessionFactory">
+<ref local="sessionFactory"/>
+</property>
+</bean>
 
 
 </beans>
-	
-
-

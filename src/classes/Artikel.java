@@ -4,8 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.NamedNativeQueries;
+import org.hibernate.annotations.NamedNativeQuery;
 
 /**
  * 
@@ -15,9 +19,11 @@ import javax.persistence.Table;
  *
  */
 
+
+
 @Entity
-@Table(name="ART")
-public class Artikel {
+@Table(name="ARTIKEL")
+public class Artikel implements Comparable<Artikel>{
 	private int id;
 	private String bezeichnung;
 	private String info;
@@ -70,10 +76,16 @@ public class Artikel {
 		this.img_url = img_url;
 	}
 	@ManyToOne(cascade = javax.persistence.CascadeType.ALL)
+	@JoinColumn(name="ARTIKELGRUPPE_ID", nullable=false)
 	public Artikelgruppe getArtikelgruppe() {
 		return artikelgruppe;
 	}
 	public void setArtikelgruppe(Artikelgruppe artikelgruppe) {
 		this.artikelgruppe = artikelgruppe;
+	}
+	@Override
+	public int compareTo(Artikel o) {
+		// TODO Auto-generated method stub
+		return ((String)bezeichnung).compareTo(o.bezeichnung);
 	}
 }

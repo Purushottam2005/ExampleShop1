@@ -1,0 +1,84 @@
+@CHARSET "ISO-8859-1";
+
+table.artikel  {
+	border: 1px solid #CCCCCC;
+	}
+	
+table.artikel th {
+	background: #EFEFEF none repeat scroll 0 0;
+	border-top: 1px solid #CCCCCC;
+	font-size: small;
+	padding-left: 5px;
+	padding-right: 4px;
+	padding-top: 4px;
+	vertical-align: top;
+}
+
+table td:first-child {
+	font-weight:bold;
+	}
+
+table .first {
+	width: 90px;
+	}
+	
+table .rest {
+	width: 400px;
+	}
+	
+table.artikel {
+	
+	border-top: 1px solid #CCCCCC;
+	font-size: small;
+	padding-left: 5px;
+	padding-right: 4px;
+	padding-top: 4px;
+	vertical-align: top;
+}
+
+
+table.warenkorb  {
+	border: 1px solid #CCCCCC;
+	}
+	
+table.warenkorb th {
+	background: #EFEFEF none repeat scroll 0 0;
+	border-top: 1px solid #CCCCCC;
+	font-size: small;
+	padding-left: 5px;
+	padding-right: 4px;
+	padding-top: 4px;
+	vertical-align: top;
+}
+
+table.warenkorb tfoot {
+	background: #EFEFEF none repeat scroll 0 0;
+	border-top: 1px solid #CCCCCC;
+	font-size: small;
+	padding-left: 5px;
+	padding-right: 4px;
+	padding-top: 4px;
+	vertical-align: top;
+}
+
+table.warenkorb td:first-child {
+	font-weight:light;
+	}
+
+table .firstwk {
+	width: 450px;
+	}
+	
+table .restwk {
+	width: 400px;
+	}
+	
+table.warenkorb {
+	
+	border-top: 1px solid #CCCCCC;
+	font-size: small;
+	padding-left: 5px;
+	padding-right: 4px;
+	padding-top: 4px;
+	vertical-align: top;
+}

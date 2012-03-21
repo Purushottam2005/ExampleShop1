@@ -1,5 +1,9 @@
 package interfaces;
 
-public interface IArtikelgruppenDAO extends IGenericDAO {
+import java.util.List;
 
+import classes.Artikelgruppe;
+
+public interface IArtikelgruppenDAO extends IGenericDAO {
+	public List<Artikelgruppe> getAlleArtGrp();
 }
