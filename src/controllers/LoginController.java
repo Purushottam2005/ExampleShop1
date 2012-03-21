@@ -49,8 +49,6 @@ public class LoginController implements ILoginController {
 	public String checkLogin() {
 		dosomething();
 		System.out.println("checklogin");
-		//KundeDAO kundedao = (KundeDAO)genericdao;
-		System.out.println(kunde.getEmail() + " - " + kunde.getPassword() + " - "+ kundedao.getHibernateTemplate().getClass().toString());
 		if (kundedao.checkPassword(kunde.getEmail(), kunde.getPassword())){
 			kunde = kundedao.getKundeByEmailPasswort(kunde.getEmail(), kunde.getPassword());
 			if(kunde.getId()!= 0){

@@ -9,7 +9,7 @@
 </head>
 <body>
 <f:view>
-Fehler beim Login
+Fail
 </f:view>
 </body>
 </html>

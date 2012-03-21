@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import classes.Kunde;
 import interfaces.IKundeDAO;
 /**
@@ -40,12 +42,8 @@ public class KundeDAO extends GenericDAO implements IKundeDAO {
 		Object[] values = new Object[2];
 		values[0] = email;
 		values[1] = password;
-	//	return ((Kunde)findByNamesParam(Kunde.class, "Select k.adresse,k.email,k.password from Kunde k where k.email = :email and k.password= :password", paramNames, values));
-		List<Kunde> mylist =  (List<Kunde>)getHibernateTemplate().findByNamedParam("Select k.adresse,k.email,k.password from Kunde k where k.email = :email and k.password= :password", paramNames, values);
-		//System.out.println(mylist.get(0).getAdresse());
-		Object o = mylist.get(0);
-		System.out.println(o.toString());
-		return null;
+		//return  (Kunde)findByNamedParam(Kunde.class, "Select k.adresse,k.email,k.password from Kunde k where k.email = :email and k.password= :password", paramNames, values).get(0);
+		return findByNamedQueryAndNamedParam(Kunde.class, "findKundeByEmailAndPassword", paramNames, values).get(0);
 	}
 	
 }

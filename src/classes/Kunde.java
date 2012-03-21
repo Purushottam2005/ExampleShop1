@@ -12,6 +12,8 @@ import org.hibernate.annotations.NamedNativeQuery;
 
 
 
+
+
 /**
  * 
  * @author andreas monschau
@@ -21,7 +23,13 @@ import org.hibernate.annotations.NamedNativeQuery;
  */
 
 
-
+@NamedNativeQueries({
+	@NamedNativeQuery(
+			name = "findKundeByEmailAndPassword",
+			query = "Select * from Kunde k where k.email = :email and k.password= :password",
+			resultClass = Kunde.class
+			)
+})
 
 @Entity
 @Table(name="Kunde")

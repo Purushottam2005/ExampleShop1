@@ -134,15 +134,8 @@ public class GenericDAO implements IGenericDAO {
 	public <T> List<T> findByNamedParam(Class<T> entityClass,
 			String queryString, String[] paramNames, Object[] values)
 			throws DataAccessException {
-		// TODO Auto-generated method stub
-		try{
-			//List<T> results = (List<T>)getHibernateTemplate().findByNamedQueryAndNamedParam(queryName, paramNames, values);
-			List<T> results = (List<T>)getHibernateTemplate().findByNamedParam(queryString, paramNames, values);
-			return results;			
-		}catch(Exception ex){
-			ex.printStackTrace();
-			return null;
-		}
+		List<T> results = (List<T>)getHibernateTemplate().findByNamedParam(queryString, paramNames, values);
+		return results;
 	}
 
 	@Override
