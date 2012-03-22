@@ -1,8 +1,10 @@
 package interfaces;
 
+import classes.Bestellung;
+import classes.Kunde;
 import classes.Warenkorb;
 
 public interface IWarenkorbDAO extends IGenericDAO{
-	public void doBestellung(Warenkorb wk);
 	public double calculateWK(Warenkorb wk);
+	Bestellung doBestellung(Warenkorb wk);
 }

@@ -17,6 +17,11 @@
   <managed-bean-class>controllers.MainController</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>bestellungController</managed-bean-name>
+  <managed-bean-class>controllers.BestellungController</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
  <navigation-rule>
   <from-view-id>/login.jsp</from-view-id>
   <navigation-case>

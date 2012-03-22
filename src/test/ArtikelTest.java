@@ -3,10 +3,12 @@ package test;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 import generics.ArtikelDAO;
 import generics.ArtikelgruppenDAO;
+import generics.BestellungDAO;
 import generics.GenericDAO;
 import generics.KundeDAO;
 
@@ -23,6 +25,7 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 
 import classes.Artikel;
 import classes.Artikelgruppe;
+import classes.Bestellung;
 import classes.Kunde;
 import classes.Warenkorb;
 
@@ -138,7 +141,6 @@ public class ArtikelTest {
 			wk.getArtikel().add(artikel);
 			wk.getArtikel().add(artikel2);
 			assertTrue(wk.getArtikel().size()==2);
-			
 		}
 
 

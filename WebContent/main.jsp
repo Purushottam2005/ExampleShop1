@@ -10,9 +10,11 @@
 </head>
 <body>
 <f:view>
-	<h:outputLabel value="Hallo #{mainController.kunde.vorname }"></h:outputLabel>
+
 
 	<h:form>
+		<h:outputLabel value="Hallo #{mainController.kunde.vorname }"></h:outputLabel>
+		&nbsp;<h:commandLink value="(ausloggen)" action="#{mainController.logout}"/>
 		<table><tr><td valign="top">
 		<h:dataTable value="#{mainController.artikelgruppenliste}" var="artikelgruppe" styleClass="artikel" headerClass="artikelheader" columnClasses="first, rest">
 			<h:column>

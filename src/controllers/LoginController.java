@@ -54,7 +54,7 @@ public class LoginController implements ILoginController {
 			if(kunde.getId()!= 0){
 				FacesContext ctx = FacesContext.getCurrentInstance();
 				HttpSession session = (HttpSession) ctx.getExternalContext().getSession(true);
-				session.setAttribute("Kunde", kunde);
+				session.setAttribute("kunde", kunde);
 				return "true";
 			}
 			return "false";

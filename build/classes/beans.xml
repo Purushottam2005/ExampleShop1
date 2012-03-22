@@ -24,6 +24,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 <value>classes.Artikel</value>
 <value>classes.Artikelgruppe</value>
 <value>classes.Kunde</value>
+<value>classes.Bestellung</value>
 </list>
 </property>
 <property name="hibernateProperties">
@@ -58,6 +59,7 @@ validate
 
 
 <bean id="artikel" class="classes.Artikel" />
+<bean id="bestellung" class="classes.Bestellung" />
 <bean id="artikelgruppe" class="classes.Artikelgruppe" />
 <bean id="artikelgruppedummy" class="classes.Artikelgruppe">
 	<property name="id" value="-1"></property>
@@ -66,6 +68,7 @@ validate
 </bean> 
 <bean id="kunde" class="classes.Kunde" />
 <bean id="warenkorb" class="classes.Warenkorb" />
+
 <bean id="logincontroller" class="controllers.LoginController" >
 <property name="genericdao" ref="mygenericdao"/>
 </bean>
@@ -89,6 +92,10 @@ validate
 <ref local="sessionFactory"/>
 </property>
 </bean>
-
+<bean id="bestellungdao" class="generics.BestellungDAO">
+<property name="sessionFactory">
+<ref local="sessionFactory"/>
+</property>
+</bean>
 
 </beans>
