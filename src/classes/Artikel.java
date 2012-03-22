@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
 
@@ -39,6 +40,7 @@ public class Artikel implements Comparable<Artikel>{
 		this.id = id;
 	}
 	@Column(name="BEZEICHNUNG")
+	@OrderColumn
 	public String getBezeichnung() {
 		return bezeichnung;
 	}

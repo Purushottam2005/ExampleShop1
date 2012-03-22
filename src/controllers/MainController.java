@@ -71,7 +71,7 @@ public class MainController implements IMainController {
 		artikelgruppenliste.add(dummy);
 		artdao = (ArtikelDAO)context.getBean("artikeldao");
 		artikelliste = artdao.getAll();
-		Collections.sort(artikelliste);
+		//Collections.sort(artikelliste);
 		artikelgruppe =(Artikelgruppe)context.getBean("artikelgruppe");
 		kunde = (Kunde)context.getBean("kunde");
 		//get Kunde from session
