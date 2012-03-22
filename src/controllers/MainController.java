@@ -5,11 +5,14 @@ import generics.ArtikelgruppenDAO;
 import generics.KundeDAO;
 import generics.WarenkorbDAO;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import javax.faces.application.NavigationHandler;
 import javax.faces.component.UIForm;
 import javax.faces.context.FacesContext;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
 
@@ -78,14 +81,21 @@ public class MainController implements IMainController {
 		kunde = (Kunde)session.getAttribute("Kunde");
 		//todo: if kunde.id == 0 then redirect to errorpage
 		//...
+		if(kunde==null){
+
+			try {
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/ExampleShop1/faces/loginerror.jsp");
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
+		}
 		warenkorb = (Warenkorb)context.getBean("warenkorb");
 		warenkorbdao = (WarenkorbDAO)context.getBean("warenkorbdao");
 		if((Warenkorb)session.getAttribute("warenkorb")==null){
 			session.setAttribute("warenkorb", warenkorb);	
-			System.out.println("nicht drin");
 		}else{
 			warenkorb = (Warenkorb)session.getAttribute("warenkorb");
-			System.out.println("drin");
 		}
 		
 		artikel = (Artikel)context.getBean("artikel");
@@ -139,7 +149,6 @@ public class MainController implements IMainController {
 	}
 	
 	public void kaufen(){
-		System.out.println(artikel.getBezeichnung());
 		warenkorb.getArtikel().add(artikel);
 		FacesContext ctx = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) ctx.getExternalContext().getSession(true);
@@ -185,6 +194,14 @@ public class MainController implements IMainController {
 		}else{
 			return 0.0;
 		}
+	}
+	
+	public void buy(){
+		FacesContext ctx = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) ctx.getExternalContext().getSession(true);
+		warenkorbdao.doBestellung((Warenkorb)session.getAttribute("warenkorb"));
+		warenkorb = null;
+		session.setAttribute("warenkorb", warenkorb);
 	}
 	
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Krazyivan-Shop</title>
 <LINK href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -43,7 +43,7 @@
 						&nbsp;|&nbsp;
 						<h:commandLink value="Warenkorb leeren" action="#{mainController.emptywk}"/>
 						&nbsp;|&nbsp;
-						<h:commandLink value="Bestellung absenden" action="#{mainController.filter}"/>
+						<h:commandLink value="Bestellung absenden" action="#{mainController.buy}"/>
 					</h:column>
 				</f:facet>
 		</h:column>

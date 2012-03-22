@@ -2,7 +2,7 @@ package controllers;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
+
 
 import generics.GenericDAO;
 import generics.KundeDAO;
@@ -10,6 +10,7 @@ import classes.Kunde;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -23,7 +24,7 @@ import controllerinterfaces.ILoginController;
 *
 */
 public class LoginController implements ILoginController {
-
+	@Autowired
 	private Kunde kunde = new Kunde();
 
 	private GenericDAO genericdao;

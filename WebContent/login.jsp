@@ -5,11 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Krazyivan-Shop</title>
 </head>
 <body>
 <f:view>
-
 	<h:form>
 		<h:panelGrid columns="2" >
 			<h:outputText value="Email"></h:outputText>
