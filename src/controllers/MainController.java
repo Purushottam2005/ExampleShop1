@@ -71,7 +71,6 @@ public class MainController implements IMainController {
 		artikelgruppenliste.add(dummy);
 		artdao = (ArtikelDAO)context.getBean("artikeldao");
 		artikelliste = artdao.getAll();
-		//Collections.sort(artikelliste);
 		artikelgruppe =(Artikelgruppe)context.getBean("artikelgruppe");
 		kunde = (Kunde)context.getBean("kunde");
 		//get Kunde from session
@@ -144,7 +143,9 @@ public class MainController implements IMainController {
 	public void filter(){
 		artikelliste = artdao.getByGrpId(artikelgruppe.getId());
 	}
-	
+	/**
+	 * adds artikel to warenkorb
+	 */
 	public void kaufen(){
 		warenkorb.getArtikel().add(artikel);
 		FacesContext ctx = FacesContext.getCurrentInstance();
@@ -153,14 +154,18 @@ public class MainController implements IMainController {
 		session.setAttribute("warenkorb", warenkorb);
 
 	}
-	
+	/**
+	 * empties the warenkorb
+	 */
 	public void emptywk(){
 		warenkorb = null;
 		FacesContext ctx = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) ctx.getExternalContext().getSession(true);
 		session.setAttribute("warenkorb", warenkorb);
 	}
-	
+	/**
+	 * logout for user and redirection to login.jsp
+	 */
 	public void logout(){
 		kunde = null;
 		FacesContext ctx = FacesContext.getCurrentInstance();
@@ -190,7 +195,10 @@ public class MainController implements IMainController {
 	public void setWarenkorb(Warenkorb warenkorb) {
 		this.warenkorb = warenkorb;
 	}
-	
+	/**
+	 * 
+	 * @return sum of all artikel
+	 */
 	public double getwarenkorbgesamt(){
 		FacesContext ctx = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) ctx.getExternalContext().getSession(true);
@@ -200,7 +208,9 @@ public class MainController implements IMainController {
 			return 0.0;
 		}
 	}
-	
+	/**
+	 * creates a bestellung from a warenkorb and redirects to order.jsp
+	 */
 	public void buy(){
 		FacesContext ctx = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) ctx.getExternalContext().getSession(true);
@@ -218,6 +228,21 @@ public class MainController implements IMainController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	/**
+	 * 
+	 * @return checks if warenkorb is empty
+	 */
+	public boolean getwarenkorbempty(){
+		FacesContext ctx = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) ctx.getExternalContext().getSession(true);
+		warenkorb = (Warenkorb)session.getAttribute("warenkorb");
+		if(warenkorb==null){
+			return false;
+		}else{
+			return warenkorb.getArtikel().size()==0;	
+		}
+		
 	}
 
 

@@ -50,28 +50,28 @@ public class Kunde {
 	public void setId(int id) {
 		this.id = id;
 	}
-	@Column(name="EMAIL")
+	@Column(name="EMAIL", length=1024)
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	@Column(name="PASSWORD")
+	@Column(name="PASSWORD", length=1024)
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@Column(name="ADRESSE")
+	@Column(name="ADRESSE", length=1024)
 	public String getAdresse() {
 		return adresse;
 	}
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-	@Column(name="VORNAME")
+	@Column(name="VORNAME", length=1024)
 	public String getVorname() {
 		return vorname;
 	}

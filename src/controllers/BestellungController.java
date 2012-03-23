@@ -14,7 +14,13 @@ import classes.Bestellung;
 import classes.Kunde;
 import classes.Warenkorb;
 import controllerinterfaces.IWarenkorbController;
-
+/**
+ * 
+ * @author andreas monschau
+ * 
+ * controller for subpage order.jsp
+ *
+ */
 public class BestellungController implements IWarenkorbController {
 		private Warenkorb warenkorb;
 		private WarenkorbDAO wkdao;
@@ -68,7 +74,9 @@ public class BestellungController implements IWarenkorbController {
 		public void setBestellung(Bestellung bestellung) {
 			this.bestellung = bestellung;
 		}
-		
+		/**
+		 * lets us return to the main.jsp
+		 */
 		public void toshop(){
 			FacesContext ctx = FacesContext.getCurrentInstance();
 			HttpSession session = (HttpSession) ctx.getExternalContext().getSession(true);

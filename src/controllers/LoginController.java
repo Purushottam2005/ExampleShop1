@@ -38,14 +38,18 @@ public class LoginController implements ILoginController {
 	public LoginController(){
 
 	}
-
+	/**
+	 * for testingpurposes moved here from standardconstructor
+	 */
 	public void dosomething(){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		factory = context;
 		
 		kundedao = (KundeDAO) context.getBean("kundedao");
 	}
-
+	/**
+	 * checks login-data which are given in form of email and password
+	 */
 	@Override
 	public String checkLogin() {
 		dosomething();

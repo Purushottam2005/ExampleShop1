@@ -16,7 +16,7 @@
 		<h:outputLabel value="Hallo #{mainController.kunde.vorname }"></h:outputLabel>
 		&nbsp;<h:commandLink value="(ausloggen)" action="#{mainController.logout}"/>
 		<table><tr><td valign="top">
-		<h:dataTable value="#{mainController.artikelgruppenliste}" var="artikelgruppe" styleClass="artikel" headerClass="artikelheader" columnClasses="first, rest">
+		<h:dataTable value="#{mainController.artikelgruppenliste}" var="artikelgruppe" styleClass="artikel" headerClass="artikelheader" columnClasses="first, rest" width="250">
 			<h:column>
 				<f:facet name="header">
 					<h:column>
@@ -29,6 +29,9 @@
 			</h:column>
 		</h:dataTable>
 		</td><td valign="top">
+		<h:panelGroup rendered="#{mainController.warenkorbempty}">
+			<h:outputText value="Ihr Warenkorb ist leer" />
+		</h:panelGroup>
 		<h:dataTable value="#{mainController.warenkorb.artikel}" var="artikel" styleClass="warenkorb" headerClass="warenkorbheader" columnClasses="firstwk, restwk">
 		<h:column>
 				<f:facet name="header">

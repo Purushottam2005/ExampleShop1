@@ -23,14 +23,23 @@ public class KundeDAO extends GenericDAO implements IKundeDAO {
 
 	@Override
 	public boolean checkPassword(String email, String password) {
-		System.out.println("checkpassword");
-		String[] paramNames = new String[2];
-		paramNames[0] = "email";
-		paramNames[1] = "password";
-		Object[] values = new Object[2];
-		values[0] = email;
-		values[1] = password;
-		return (findByNamedParam(Kunde.class, "Select k.adresse,k.email,k.password from Kunde k where k.email = :email and k.password= :password", paramNames, values).size()==1);
+		if (email==null || password==null){
+			return false;
+		}else{
+			String[] paramNames = new String[2];
+			paramNames[0] = "email";
+			paramNames[1] = "password";
+			Object[] values = new Object[2];
+			values[0] = email;
+			values[1] = password;
+			return (findByNamedParam(Kunde.class, "Select k.adresse,k.email,k.password from Kunde k where k.email = :email and k.password= :password", paramNames, values).size()==1);			
+		}
+	}
+	
+	public void save(Kunde k){
+		if(k.getAdresse().length()>0 && k.getEmail().length()>0 && k.getPassword().length()>0 && k.getVorname().length()>0){
+			super.save(k);
+		}
 	}
 
 

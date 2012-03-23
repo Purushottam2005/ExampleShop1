@@ -12,6 +12,8 @@ import generics.BestellungDAO;
 import generics.GenericDAO;
 import generics.KundeDAO;
 
+import oracle.net.aso.k;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -142,6 +144,29 @@ public class ArtikelTest {
 			wk.getArtikel().add(artikel2);
 			assertTrue(wk.getArtikel().size()==2);
 		}
-
+		@Test
+		public void TestBorderCases(){
+			ArtikelDAO artdao = new ArtikelDAO();
+			artdao.setHibernateTemplate(hibernatetemplate, sessionFactory);
+			//null cases
+			artdao.save(null);
+			KundeDAO kdao = new KundeDAO();
+			kdao.setHibernateTemplate(hibernatetemplate, sessionFactory);
+			assertFalse(kdao.checkPassword(null, null));
+			//empty input
+			Kunde k = new Kunde();
+			k.setAdresse("");
+			k.setEmail("");
+			k.setPassword("");
+			k.setVorname("");
+			kdao.save(k);
+			//bad input
+			Kunde k2 = new Kunde();
+			k2.setAdresse("01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+			k2.setEmail("none@none.de");
+			k2.setPassword("test");
+			k2.setVorname("tester");
+			kdao.save(k2);
+		}
 
 }

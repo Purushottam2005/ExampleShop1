@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
@@ -19,10 +18,9 @@ import javax.persistence.Table;
  */
 
 
-
 @Entity
 @Table(name="ARTIKEL")
-public class Artikel implements Comparable<Artikel>{
+public class Artikel{
 	private int id;
 	private String bezeichnung;
 	private String info;
@@ -39,15 +37,15 @@ public class Artikel implements Comparable<Artikel>{
 	public void setId(int id) {
 		this.id = id;
 	}
-	@Column(name="BEZEICHNUNG")
-	@OrderColumn
+	@Column(name="BEZEICHNUNG", length=1024)
+	@OrderColumn(name="pos")
 	public String getBezeichnung() {
 		return bezeichnung;
 	}
 	public void setBezeichnung(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
 	}
-	@Column(name="INFO")
+	@Column(name="INFO", length=1024)
 	public String getInfo() {
 		return info;
 	}
@@ -68,7 +66,7 @@ public class Artikel implements Comparable<Artikel>{
 	public void setVk_brutto(float d) {
 		this.vk_brutto = d;
 	}
-	@Column(name="IMG_URL")
+	@Column(name="IMG_URL", length=1024)
 	public String getImg_url() {
 		return img_url;
 	}
@@ -76,16 +74,11 @@ public class Artikel implements Comparable<Artikel>{
 		this.img_url = img_url;
 	}
 	@ManyToOne(cascade = javax.persistence.CascadeType.ALL)
-	@JoinColumn(name="ARTIKELGRUPPE_ID", nullable=false)
 	public Artikelgruppe getArtikelgruppe() {
 		return artikelgruppe;
 	}
 	public void setArtikelgruppe(Artikelgruppe artikelgruppe) {
 		this.artikelgruppe = artikelgruppe;
 	}
-	@Override
-	public int compareTo(Artikel o) {
-		// TODO Auto-generated method stub
-		return ((String)bezeichnung).compareTo(o.bezeichnung);
-	}
+
 }

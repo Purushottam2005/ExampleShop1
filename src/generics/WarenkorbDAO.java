@@ -21,7 +21,9 @@ import interfaces.IWarenkorbDAO;
  *
  */
 public class WarenkorbDAO extends GenericDAO implements IWarenkorbDAO {
-
+	/**
+	 * creates a Bestellung-Instance and returns it
+	 */
 	@Override
 	public Bestellung doBestellung(Warenkorb wk) {
 		System.out.println("doBestellung");
@@ -42,7 +44,9 @@ public class WarenkorbDAO extends GenericDAO implements IWarenkorbDAO {
 		bdao.createBestellung(bestellung);
 		return bestellung;
 	}
-
+	/**
+	 * calculates the value of all artikel in a warenkorb
+	 */
 	@Override
 	public double calculateWK(Warenkorb wk) {
 		double result = 0;

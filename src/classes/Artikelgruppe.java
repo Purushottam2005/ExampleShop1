@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 /**
  * 
@@ -20,7 +21,7 @@ public class Artikelgruppe {
 	private String info;
 	@Id
 	@GeneratedValue
-	@Column(name="ID")
+	@Column(name="id")
 	public int getId() {
 		return id;
 	}
@@ -29,14 +30,15 @@ public class Artikelgruppe {
 	}
 	
 	
-	@Column(name="BEZEICHNUNG")	
+	@Column(name="BEZEICHNUNG", length=1024)	
+	@OrderColumn(name="pos")
 	public String getBezeichnung() {
 		return bezeichnung;
 	}
 	public void setBezeichnung(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
 	}
-	@Column(name="INFO")
+	@Column(name="INFO", length=1024)
 	public String getInfo() {
 		return info;
 	}
