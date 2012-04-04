@@ -95,6 +95,7 @@ public class GenericDAO implements IGenericDAO {
 	public <T> List<T> findByNamedQuery(Class<T> entitiyClass, String queryName)
 			throws DataAccessException {
 		List<T> results = (List<T>)getHibernateTemplate().findByNamedQuery(queryName);
+
 		return results;
 	}
 	public HibernateTemplate getHibernateTemplate() {

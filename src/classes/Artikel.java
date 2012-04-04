@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
@@ -74,6 +75,7 @@ public class Artikel{
 		this.img_url = img_url;
 	}
 	@ManyToOne(cascade = javax.persistence.CascadeType.ALL)
+	@JoinColumn(name = "grp_id", nullable=false)
 	public Artikelgruppe getArtikelgruppe() {
 		return artikelgruppe;
 	}

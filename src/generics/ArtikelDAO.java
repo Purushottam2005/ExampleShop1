@@ -31,8 +31,8 @@ public class ArtikelDAO extends GenericDAO implements IArtikelDAO {
 			paramNames[0] = "artikelgruppe_id";
 			Object[] values = new Object[1];
 			values[0] = id;
-			//return findByNamedParam(Artikel.class, "select a from Artikel a where a.artikelgruppe = :artikelgruppe_id", paramNames, values);
-			return getAll();
+			return findByNamedParam(Artikel.class, "select a from Artikel a where a.artikelgruppe.id = :artikelgruppe_id", paramNames, values);
+			//return getAll();
 		}
 	}
 

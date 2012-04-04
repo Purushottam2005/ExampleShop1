@@ -143,6 +143,9 @@ public class ArtikelTest {
 			wk.getArtikel().add(artikel);
 			wk.getArtikel().add(artikel2);
 			assertTrue(wk.getArtikel().size()==2);
+			//Artikel nach Artikelgruppe
+			ArrayList<Artikel>artikelnachgruppe = (ArrayList<Artikel>)adao.getByGrpId(ag.getId());
+			assertTrue(artikelnachgruppe.size()>0);
 		}
 		@Test
 		public void TestBorderCases(){
@@ -168,5 +171,6 @@ public class ArtikelTest {
 			k2.setVorname("tester");
 			kdao.save(k2);
 		}
+
 
 }

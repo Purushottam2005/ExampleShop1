@@ -1,9 +1,12 @@
 package classes;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 /**
@@ -19,6 +22,7 @@ public class Artikelgruppe {
 	private int id;
 	private String bezeichnung;
 	private String info;
+	private Set<Artikel> artikel;
 	@Id
 	@GeneratedValue
 	@Column(name="id")
@@ -44,5 +48,12 @@ public class Artikelgruppe {
 	}
 	public void setInfo(String info) {
 		this.info = info;
+	}
+	@OneToMany(mappedBy="artikelgruppe")
+	public Set<Artikel> getArtikel() {
+		return artikel;
+	}
+	public void setArtikel(Set<Artikel> artikel) {
+		this.artikel = artikel;
 	}
 }
