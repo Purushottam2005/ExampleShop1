@@ -51,7 +51,6 @@ public class KundeDAO extends GenericDAO implements IKundeDAO {
 		Object[] values = new Object[2];
 		values[0] = email;
 		values[1] = password;
-		//return  (Kunde)findByNamedParam(Kunde.class, "Select k.adresse,k.email,k.password from Kunde k where k.email = :email and k.password= :password", paramNames, values).get(0);
 		return findByNamedQueryAndNamedParam(Kunde.class, "findKundeByEmailAndPassword", paramNames, values).get(0);
 	}
 	

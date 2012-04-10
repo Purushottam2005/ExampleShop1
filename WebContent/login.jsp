@@ -12,14 +12,14 @@
 	<h:form>
 		<h:panelGrid columns="2" >
 			<h:outputText value="Email"></h:outputText>
-			<h:inputText value="#{LoginController.kunde.email}" required="true"></h:inputText>
+			<h:inputText value="#{LoginController.kunde.email}" required="true"/>
 		</h:panelGrid>
 				<h:panelGrid columns="2">
 			<h:outputText value="Passwort"></h:outputText>
-			<h:inputSecret value="#{LoginController.kunde.password}" required="true"></h:inputSecret>
+			<h:inputSecret value="#{LoginController.kunde.password}" required="true"/>
 		</h:panelGrid>
 		<h:panelGroup>
-			<h:commandButton action="#{LoginController.checkLogin}" value="save"></h:commandButton>
+			<h:commandButton action="#{LoginController.checkLogin}" value="save"/>
 		</h:panelGroup>
 	</h:form>
 </f:view>

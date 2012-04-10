@@ -58,6 +58,31 @@ public class ArtikelTest {
 			this.session = SessionFactoryUtils.getSession(sessionFactory, true);
 			TransactionSynchronizationManager.bindResource(sessionFactory, new SessionHolder(session));	
 		}
+		/**
+		@Test
+		public void TestBorderCases(){
+			ArtikelDAO artdao = new ArtikelDAO();
+			artdao.setHibernateTemplate(hibernatetemplate, sessionFactory);
+			//null cases
+			artdao.save(null);
+			KundeDAO kdao = new KundeDAO();
+			kdao.setHibernateTemplate(hibernatetemplate, sessionFactory);
+			assertFalse(kdao.checkPassword(null, null));
+			//empty input
+			Kunde k = new Kunde();
+			k.setAdresse("");
+			k.setEmail("");
+			k.setPassword("");
+			k.setVorname("");
+			kdao.save(k);
+			//bad input
+			Kunde k2 = new Kunde();
+			k2.setAdresse("01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+			k2.setEmail("none@none.de");
+			k2.setPassword("test");
+			k2.setVorname("tester");
+			kdao.save(k2);
+		}**/
 		
 		@Test
 		public void test() {
@@ -147,30 +172,7 @@ public class ArtikelTest {
 			ArrayList<Artikel>artikelnachgruppe = (ArrayList<Artikel>)adao.getByGrpId(ag.getId());
 			assertTrue(artikelnachgruppe.size()>0);
 		}
-		@Test
-		public void TestBorderCases(){
-			ArtikelDAO artdao = new ArtikelDAO();
-			artdao.setHibernateTemplate(hibernatetemplate, sessionFactory);
-			//null cases
-			artdao.save(null);
-			KundeDAO kdao = new KundeDAO();
-			kdao.setHibernateTemplate(hibernatetemplate, sessionFactory);
-			assertFalse(kdao.checkPassword(null, null));
-			//empty input
-			Kunde k = new Kunde();
-			k.setAdresse("");
-			k.setEmail("");
-			k.setPassword("");
-			k.setVorname("");
-			kdao.save(k);
-			//bad input
-			Kunde k2 = new Kunde();
-			k2.setAdresse("01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
-			k2.setEmail("none@none.de");
-			k2.setPassword("test");
-			k2.setVorname("tester");
-			kdao.save(k2);
-		}
+
 
 
 }
